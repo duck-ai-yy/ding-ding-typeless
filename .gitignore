@@ -1,0 +1,47 @@
+# --- ASR 模型（80–229MB，预下载，不进版本库）---
+models/*
+!models/.gitkeep
+
+# --- sherpa-onnx 静态库 + headers（M2 起用，~50MB，由 fetch-deps.sh 拉取）---
+# 库本体不进 repo；版本号 + SHA256 写在 scripts/fetch-deps.sh，构建可复现
+Vendor/sherpa-onnx/
+Vendor/.cache/
+
+# --- Swift / SPM 构建产物 ---
+.build/
+.swiftpm/
+Package.resolved
+*.app/
+
+# --- macOS ---
+.DS_Store
+
+# --- 编辑器 ---
+.vscode/
+.idea/
+*.xcuserstate
+
+# --- 千问 / 本地服务配置（若引入，绝不进库）---
+.env
+*.local
+
+# --- 临时文件 ---
+*.log
+/tmp/
+
+# --- agent prompt / skill 是 top 机密，永远本地 ---
+# 默认整个 .claude/ 不进 repo（覆盖 agents / skills / hooks 等）。
+# 将来需要例外用 negation：!.claude/specific-thing
+.claude/
+
+# --- 内部协作 / 磨合记录，永远本地 ---
+# tuning-log 含跨项目实战经验，team know-how 不公开
+tuning-log.md
+
+# --- AI 工具缓存目录（防御性，未来用别的 AI 工具时不忘 ignore）---
+# .claude/ 已在上方覆盖；以下是其他常见 AI 工具的本地缓存目录
+.anthropic/
+.cursor/
+.copilot/
+.aider/
+.continue/

@@ -1,0 +1,16 @@
+// SherpaOnnxC —— SPM systemLibrary target 的 modulemap
+//
+// 作用：告诉 Swift 编译器 sherpa-onnx 的 C 头文件长什么样、暴露成
+//      `import SherpaOnnxC` 模块。库文件本身的链接由 Package.swift
+//      的 linkerSettings 负责（11 个 -l* + -lc++）。
+//
+// 设计选择：
+//   - umbrella header 用 shim.h 单文件转发（最小暴露原则）
+//   - 不在这里写 `link "sherpa-onnx-c-api"` —— SPM systemLibrary 场景下
+//     库链接走 Package.swift 的 linkerSettings 更集中、可看到 11 个全套，
+//     而 modulemap 里只写一个 link 反而误导（漏 10 个）。
+
+module SherpaOnnxC {
+    header "shim.h"
+    export *
+}
