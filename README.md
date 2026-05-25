@@ -5,6 +5,7 @@
 **懒得打字？让嘴替来。**
 
 按住 ⌥Space 说中文 → 松开 → 自动转录 + 补标点 → 粘到光标位置。
+
 **隐私性极强，0第三方调用，0成本，极低延迟。**
 
 [![Platform](https://img.shields.io/badge/platform-macOS_12%2B-blue)](https://www.apple.com/macos/)
